@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bracedev Templates Store – Demo</title>
+  <style>
+    /* ---------- THEME ---------- */
+    :root {
+      --bg: #f7f8fb;
+      --text: #0f172a;
+      --muted: #64748b;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --brand: #f6416c;
+      --brand-2: #7c3aed;
+      --shadow: 0 10px 30px rgba(2, 6, 23, .08);
+      --backdrop: rgba(0, 0, 0, .8);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b0d14;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --card: #0f1420;
+      --border: #1f2937;
+      --shadow: 0 12px 32px rgba(0, 0, 0, .45);
+      --backdrop: rgba(0, 0, 0, .85);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.5 Inter, system-ui, Segoe UI, Roboto, Arial, Helvetica, sans-serif
+    }
+
+    a {
+      color: inherit
+    }
+
+    button {
+      font: inherit
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .3px
+    }
+
+    .spacer {
+      flex: 1
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: transparent;
+      padding: .45rem .7rem;
+      border-radius: 999px;
+      cursor: pointer
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      max-width: 1200px;
+      margin: 24px auto 8px;
+      padding: 24px 20px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ff9d76, #f6416c);
+      color: #fff;
+      box-shadow: var(--shadow)
+    }
+
+    .hero h1 {
+      margin: 0 0 6px;
+      font-size: 28px
+    }
+
+    .hero p {
+      margin: 0;
+      opacity: .95
+    }
+
+    /* ---------- GRID ---------- */
+    .grid {
+      max-width: 1200px;
+      margin: 20px auto 80px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease
+    }
+
+    .card:hover {
+      transform: translateY(-4px)
+    }
+
+    .thumb {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      background: #11182710
+    }
+
+    .body {
+      padding: 14px
+    }
+
+    .title {
+      font-weight: 700;
+      margin: 0 0 4px
+    }
+
+    .desc {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: .93rem
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px
+    }
+
+    .tag {
+      font-size: .78rem;
+      padding: 4px 8px;
+      background: #1118270d;
+      border: 1px solid var(--border);
+      border-radius: 999px
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .price {
+      font-weight: 800
+    }
+
+    .btn {
+      padding: .55rem .9rem;
+      border: none;
+      border-radius: 10px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border)
+    }
+
+    /* ---------- MODAL ---------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: var(--backdrop);
+      z-index: 1000
+    }
+
+    .modal.open {
+      display: grid;
+      animation: fadeIn .2s ease
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .modal-inner {
+      width: min(1100px, 92vw);
+      height: min(86vh, 820px);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transform: scale(.95);
+      opacity: 0;
+      animation: pop .25s .08s cubic-bezier(.2, .8, .2, 1) forwards
+    }
+
+    @keyframes pop {
+      to {
+        transform: scale(1);
+        opacity: 1
+      }
+    }
+
+    .modal-layout {
+      display: grid;
+      grid-template-columns: 1.2fr .9fr;
+      height: 100%
+    }
+
+    @media (max-width: 900px) {
+      .modal-layout {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .preview {
+      position: relative;
+      background: #0b0d14
+    }
+
+    .preview iframe,
+    .preview img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0
+    }
+
+    .nav-arrows {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none
+    }
+
+    .nav-arrows button {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, .85);
+      border: none;
+      border-radius: 12px;
+      padding: .6rem .8rem;
+      margin: 12px;
+      cursor: pointer
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      gap: 12px;
+      overflow: auto
+    }
+
+    .title-lg {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: .45rem .7rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer
+    }
+
+    .pill[data-active="true"] {
+      background: #11182710
+    }
+
+    .device-switch {
+      display: flex;
+      gap: 8px
+    }
+
+    .device {
+      padding: .4rem .7rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      border-radius: 10px;
+      cursor: pointer
+    }
+
+    .device[data-active="true"] {
+      background: #11182710
+    }
+
+    .cta {
+      display: flex;
+      gap: 10px;
+      align-items: center
+    }
+
+    .heart {
+      cursor: pointer;
+      font-size: 18px
+    }
+
+    .close-x {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 5;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .45rem .6rem;
+      cursor: pointer
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">Bracedev</div>
+      <div class="spacer"></div>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌓 Theme</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Find Your Perfect Website Template</h1>
+    <p>Beautiful, responsive, and ready to use.</p>
+  </section>
+
+  <main class="grid" id="grid">
+    <!-- Cards are injected by JS so modal navigation knows the list -->
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="close-x" id="closeBtn" aria-label="Close">✕</button>
+      <div class="modal-layout">
+        <div class="preview">
+          <!-- Using image screenshots for demo. Replace with iframe src if you have live demos. -->
+          <img id="previewImg" alt="Template preview" />
+          <div class="nav-arrows">
+            <button id="prevBtn" aria-label="Previous">⟨</button>
+            <button id="nextBtn" aria-label="Next">⟩</button>
+          </div>
+        </div>
+        <aside class="sidebar">
+          <h2 class="title-lg" id="mTitle">Template Title</h2>
+          <p class="muted" id="mDesc">Short description of the template.</p>
+
+          <div class="device-switch" aria-label="Device preview (visual only)">
+            <button class="device" data-size="desktop" data-active="true">Desktop</button>
+            <button class="device" data-size="tablet">Tablet</button>
+            <button class="device" data-size="mobile">Mobile</button>
+          </div>
+
+          <div class="btn-row">
+            <button class="pill" id="shareBtn">🔗 Share</button>
+            <button class="pill" id="wishlistBtn" data-active="false">♡ Wishlist</button>
+          </div>
+
+          <div>
+            <div class="muted">Tags</div>
+            <div class="tags" id="mTags"></div>
+          </div>
+
+          <div class="cta">
+            <div class="price" id="mPrice">$29</div>
+            <button class="btn" id="buyBtn">Buy Now</button>
+            <button class="btn secondary" id="openDemoBtn">Open Live Demo</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --------- DATA (swap with your real templates) ---------
+    const TEMPLATES = [
+      {
+        id: 'modern-business',
+        title: 'Modern Business',
+        desc: 'Clean corporate website for agencies and startups.',
+        price: 29,
+        tags: ['Business', 'SaaS', 'Landing'],
+        thumb: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop',
+        screenshot: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=1400&auto=format&fit=crop',
+        demo: 'https://example.com/template1',
+        buy: '#'
+      },
+      {
+        id: 'portfolio-pro',
+        title: 'Portfolio Pro',
+        desc: 'Showcase your work with elegant galleries.',
+        price: 24,
+        tags: ['Portfolio', 'Creator', 'Minimal'],
+        thumb: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop',
+        screenshot: 'https://images.unsplash.com/photo-1521939094609-93aba1af40d4?q=80&w=1400&auto=format&fit=crop',
+        demo: 'https://example.com/template2',
+        buy: '#'
+      },
+      {
+        id: 'elegant-blog',
+        title: 'Elegant Blog',
+        desc: 'Typography-first layout for writers & bloggers.',
+        price: 19,
+        tags: ['Blog', 'Content', 'Magazine'],
+        thumb: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop',
+        screenshot: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1400&auto=format&fit=crop',
+        demo: 'https://example.com/template3',
+        buy: '#'
+      },
+      {
+        id: 'startup-hero',
+        title: 'Startup Hero',
+        desc: 'Conversion-focused landing page with CTA blocks.',
+        price: 32,
+        tags: ['Startup', 'Landing', 'Marketing'],
+        thumb: 'https://images.unsplash.com/photo-1551281044-8ea9f52f26e3?q=80&w=1200&auto=format&fit=crop',
+        screenshot: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1400&auto=format&fit=crop',
+        demo: 'https://example.com/template4',
+        buy: '#'
+      }
+    ];
+
+    // --------- RENDER GRID ---------
+    const grid = document.getElementById('grid');
+    grid.innerHTML = TEMPLATES.map((t, idx) => `
+      <article class="card" data-index="${idx}">
+        <img class="thumb" src="${t.thumb}" alt="${t.title} preview"/>
+        <div class="body">
+          <h3 class="title">${t.title}</h3>
+          <p class="desc">${t.desc}</p>
+          <div class="tags">${t.tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}</div>
+          <div class="row">
+            <div class="price">$${t.price}</div>
+            <div class="row" style="gap:8px">
+              <button class="btn secondary" data-action="demo">Preview</button>
+              <button class="btn" data-action="buy">Buy</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    // --------- MODAL LOGIC ---------
+    const modal = document.getElementById('modal');
+    const previewImg = document.getElementById('previewImg');
+    const mTitle = document.getElementById('mTitle');
+    const mDesc = document.getElementById('mDesc');
+    const mTags = document.getElementById('mTags');
+    const mPrice = document.getElementById('mPrice');
+    const buyBtn = document.getElementById('buyBtn');
+    const openDemoBtn = document.getElementById('openDemoBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const wishlistBtn = document.getElementById('wishlistBtn');
+    const shareBtn = document.getElementById('shareBtn');
+
+    let currentIndex = 0;
+
+    function openModal(index) {
+      currentIndex = index;
+      const t = TEMPLATES[currentIndex];
+      previewImg.src = t.screenshot;
+      mTitle.textContent = t.title;
+      mDesc.textContent = t.desc;
+      mTags.innerHTML = t.tags.map(tag => `<span class='tag'>${tag}</span>`).join('');
+      mPrice.textContent = `$${t.price}`;
+      buyBtn.onclick = () => window.location.href = t.buy;
+      openDemoBtn.onclick = () => window.open(t.demo, '_blank');
+
+      const fav = getWishlist().includes(t.id);
+      wishlistBtn.dataset.active = fav;
+      wishlistBtn.textContent = fav ? '♥ Wishlisted' : '♡ Wishlist';
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    function showNext() {
+      openModal((currentIndex + 1) % TEMPLATES.length);
+    }
+    function showPrev() {
+      openModal((currentIndex - 1 + TEMPLATES.length) % TEMPLATES.length);
+    }
+
+    grid.addEventListener('click', (e) => {
+      const card = e.target.closest('.card');
+      if (!card) return;
+      const idx = Number(card.dataset.index);
+      if (e.target.matches('[data-action="demo"]')) {
+        openModal(idx);
+      } else if (e.target.matches('[data-action="buy"]')) {
+        window.location.href = TEMPLATES[idx].buy;
+      }
+    });
+
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    // Keyboard shortcuts: Esc to close, arrows to navigate
+    window.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('open')) {
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
+      }
+    });
+
+    // Device switcher (visual only active state)
+    document.querySelectorAll('.device').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.device').forEach(b => b.dataset.active = 'false');
+        btn.dataset.active = 'true';
+      });
+    });
+
+    // Wishlist with localStorage
+    function getWishlist() {
+      try { return JSON.parse(localStorage.getItem('bracedev_wishlist') || '[]'); } catch { return []; }
+    }
+    function setWishlist(arr) { localStorage.setItem('bracedev_wishlist', JSON.stringify(arr)); }
+
+    wishlistBtn.addEventListener('click', () => {
+      const id = TEMPLATES[currentIndex].id;
+      let list = getWishlist();
+      if (list.includes(id)) list = list.filter(x => x !== id); else list.push(id);
+      setWishlist(list);
+      wishlistBtn.dataset.active = list.includes(id);
+      wishlistBtn.textContent = list.includes(id) ? '♥ Wishlisted' : '♡ Wishlist';
+    });
+
+    // Share (Web Share API fallback to clipboard)
+    shareBtn.addEventListener('click', async () => {
+      const t = TEMPLATES[currentIndex];
+      const shareData = { title: t.title, text: `${t.title} – ${t.desc}`, url: t.demo };
+      if (navigator.share) {
+        try { await navigator.share(shareData); } catch { }
+      } else {
+        try { await navigator.clipboard.writeText(shareData.url); alert('Link copied to clipboard!'); } catch { alert('Copy this link: ' + shareData.url); }
+      }
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('bracedev_theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      if (next === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      localStorage.setItem('bracedev_theme', next === 'dark' ? 'dark' : '');
+    });
+  </script>
+</body>
+
+</html>

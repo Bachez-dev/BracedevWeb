@@ -1,0 +1,109 @@
+  .faq-container-content{
+    width: 100%;
+    background: white;
+  }
+  .faq-container {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    background: white;
+  }
+
+  .faq-header h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .faq-header p {
+    color: #555;
+    margin-bottom: 40px;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .faq-card {
+    background: #f9f9ff;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    transition: 0.3s ease;
+  }
+
+  .faq-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .faq-card .icon {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    background: #e7e9fc;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #4e4de6;
+  }
+
+  .faq-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .faq-card p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  .faq-support {
+    background: #d4dcf5;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .faq-support-CTA{
+    height: 150px;
+  }
+
+  .faq-support .avatars img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-right: -10px;
+    box-shadow: 0 0 0 2px #f5f7fd;
+  }
+
+  .faq-support h4 {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .faq-support p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .btn-purple {
+    background: #4e4de6;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .btn-purple:hover {
+    background: #3a3ac1;
+  }
