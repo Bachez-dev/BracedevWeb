@@ -2,7 +2,7 @@
 
 :root {
   --bg-color: #121212;
-  --text-color: #b0bec5;
+  --text-color: #10161a;
   --primary-color: #1e88e5;
   --btn-color: #7730F4;
   --btn-hover-color: #5a2dc4;
@@ -197,6 +197,11 @@ a {
   height: 90vh;
   padding: 4rem 0;
 }
+
+.container {
+  width: 100%;
+  margin: auto;
+}
 .blog h2 {
   text-align: center;
   margin-bottom: 0.5rem;
@@ -207,8 +212,9 @@ a {
   margin-bottom: 2rem;
 }
 .blog-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 .blog-card {
