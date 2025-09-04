@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 :root {
-  --bg-color: #121212;
-  --text-color: #b0bec5;
-  --primary-color: #1e88e5;
-  --btn-color: #7730F4;
-  --btn-hover-color: #5a2dc4;
-  --stroke-color: #B0BEC5;
+  --bg-color: #F2F2F2;
+  --text-color: #282828;
+  --btn-cone:#FF5E00;
+  --bg-two:#959396;
+  --text-heading:#FF5E00;
 }
+
 
 * {
   margin: 0;
@@ -20,247 +21,6 @@ body {
   overflow-y: auto;
 }
 
-.preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #4f46e5, #06b6d4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  z-index: 1000;
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-#preloader.fade-out {
-  opacity: 0;
-  transform: scale(1.1);
-  visibility: hidden;
-  pointer-events: none;
-  display: none;
-}
-
-#particleCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-/* Added corner text elements */
-.corner-text {
-  position: absolute;
-  z-index: 3;
-  font-size: 1.1rem;
-  font-weight: 300;
-  letter-spacing: 0.15em;
-  opacity: 0;
-  animation: cornerTextReveal 1.5s ease-out 1s forwards;
-}
-
-.corner-text.top-right {
-  top: 2rem;
-  right: 2rem;
-  text-align: right;
-  line-height: 1.6;
-}
-
-.corner-text.bottom-right {
-  bottom: 2rem;
-  right: 2rem;
-  text-align: right;
-  line-height: 1.6;
-}
-
-
-/* huge counter */
-.counter-container {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  z-index: 3;
-  opacity: 0;
-  animation: counterReveal 1s ease-out 0.5s forwards;
-}
-
-.huge-counter {
-  font-size: clamp(4rem, 12vw, 8rem);
-  font-weight: 900;
-  line-height: 0.8;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, #000, #333, #000);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: counterShimmer 2s ease-in-out infinite;
-}
-
-.progress-container-bottom {
-  width: 200px;
-  height: 4px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-
-.progress-bar-bottom {
-  height: 100%;
-  background: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.8), #000);
-  background-size: 200% 100%;
-  border-radius: 2px;
-  width: 0%;
-  animation: progressFillBottom 6s ease-out forwards, progressShimmerBottom 2s ease-in-out infinite;
-
-}
-
-.progress-label {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.2rem;
-  opacity: 0.7;
-}
-
-.company-name {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  /* matches preloader background */
-  opacity: 0;
-  visibility: hidden;
-  z-index: 500;
-  transition: opacity 1s ease-out, visibility 1s ease-out;
-}
-
-.company-name h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #333;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease-out;
-}
-
-.company-name.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.company-name.show h1 {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* MAIN CONTENT */
-.main-content {
-  width: 100%;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1.5s ease-out;
-  
-}
-
-.main-content.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* animations */
-@keyframes logoShimmer {
-
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes counterReveal {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes counterShimmer {
-
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes progressFillBottom {
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes progressShimmerBottom {
-
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes cornerTextReveal {
-  to {
-    opacity: 0.8;
-  }
-}
-
-@keyframes taglineReveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes progressReveal {
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes progressFill {
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes loadingTextReveal {
-  to {
-    opacity: 0.8;
-  }
-}
-
-
-
-:root {
-  --bg-color: #49657B;
-  --text-color: #282828;
-}
 
 
 .container-content {
@@ -413,7 +173,7 @@ nav ul a:hover {
 }
 
 .content-wrapper {
-  max-width: 470px;
+  max-width: 550px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -479,17 +239,18 @@ nav ul a:hover {
   margin-top: 30px;
 
   input {
-    padding: 0.7rem 1.8rem;
+    padding: 1.2rem 2rem;
     border-radius: 50px;
     border: none;
     font-size: 1rem;
     font-weight: 500;
     outline: none;
-    width: 250px;
+    width: 350px;
   }
 
   .btn-start {
-    padding: 0.7rem 1.8rem;
+    margin-left: 10px;
+    padding: 1.2rem 2rem;
     border-radius: 50px;
     border: none;
     cursor: pointer;
@@ -513,3 +274,5 @@ video {
   height: 100%;
   object-fit: cover;
 }
+
+    
