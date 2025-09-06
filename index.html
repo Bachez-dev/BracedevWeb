@@ -7,16 +7,21 @@
   <title>Bracedev | Company</title>
 
   <!-- <link rel="stylesheet" href="./pages.css/preloader.css"> -->
+
   <link rel="stylesheet" href="bracedev2.css">
+  <link rel="stylesheet" href="showcase.css">
   <link rel="stylesheet" href="template.css">
   <link rel="stylesheet" href="pricing.css">
   <link rel="stylesheet" href="steps.css">
+
   <link rel="stylesheet" href="testimonials.css">
   <link rel="stylesheet" href="footer.css">
   <link rel="stylesheet" href="FAQ.css">
   <link rel="stylesheet" href="blog.css">
   <link rel="stylesheet" href="features.css">
-  <link rel="stylesheet" href="GallerySec.css"> 
+  <link rel="stylesheet" href="GallerySec.css">
+
+
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,8 +43,8 @@
     <!-- NAVIGATION BAR -->
     <div class="container-content">
       <div class="container">
-        <img src="./assets/clip-shape.png" alt="" class="clip-shape1">
-        <img src="./assets/clip-shape.png" alt="" class="clip-shape2">
+        <!-- <img src="./assets/clip-shape.png" alt="" class="clip-shape1">
+        <img src="./assets/clip-shape.png" alt="" class="clip-shape2"> -->
 
         <img src="./assets/ellipse.png" class="gradient-shape" alt="">
 
@@ -89,10 +94,10 @@
           </div>
         </div>
 
-        <video width="100%" height="100%" autoplay muted>
+        <!-- <video width="100%" height="100%" autoplay muted>
           <source src="./assets/ai-face.mp4" type="video/mp4">
           Your browser does not support the video tag.
-        </video>
+        </video> -->
       </div>
 
     </div>
@@ -363,23 +368,96 @@
       </div>
     </section>
 
+    <!-- SHOWCASE -->
 
+    <!-- INTRO SPACER for testing -->
+
+
+    <section class="team-section" id="teamSection">
+
+      <section class="spacer">
+        <div class="team-sec-header">
+          <h2>Team</h2>
+          <h1>Meet the Bracedev Team</h1>
+          <p>Our team of passionate individuals dedicated to crafting beautiful web experiences.</p>
+        </div>
+      </section>
+
+      <div class="team-container">
+        <div class="left">
+          <div class="rail" aria-hidden="true">
+            <div class="fill" id="railFill"></div>
+          </div>
+
+          <div class="count-viewport" id="countViewport" aria-hidden="false">
+            <div class="count-stack" id="countStack">
+              <h1 class="active">01</h1>
+              <h1>02</h1>
+              <h1>03</h1>
+              <h1>04</h1>
+              <h1>05</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="cards" id="cardsTrack">
+            <div class="card active">
+              <img src="https://i.pravatar.cc/720?img=11" alt="Member 1">
+              <h3>Samantha</h3>
+              <p>CEO — Vision & strategy. Builds beautiful products.</p>
+            </div>
+
+            <div class="card">
+              <img src="https://i.pravatar.cc/720?img=22" alt="Member 2">
+              <h3>Isabella</h3>
+              <p>Design Head — UX / UI leader and visual storyteller.</p>
+            </div>
+
+            <div class="card">
+              <img src="https://i.pravatar.cc/720?img=33" alt="Member 3">
+              <h3>Gabrielle</h3>
+              <p>CMO — Growth & brand strategy; makes noise the right way.</p>
+            </div>
+
+            <div class="card">
+              <img src="https://i.pravatar.cc/720?img=44" alt="Member 4">
+              <h3>John</h3>
+              <p>CTO — Architect of scale and performance.</p>
+            </div>
+
+            <div class="card">
+              <img src="https://i.pravatar.cc/720?img=55" alt="Member 5">
+              <h3>Natalie</h3>
+              <p>Founder — The heartbeat of Bracedev.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
 
 
     <!-- TESTIMONIALS SECTION -->
 
-    <section class="testimonials-section" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="100">
-      <h2>Testimonials</h2>
-      <p>Words of praise from others about our presence.</p>
-
-      <div class="scroll-row" id="row1">
-        <div class="testimonial-track" id="track1">
-        </div>
+    <section class="testimonials-section">
+      <div class="testimonials-header">
+        <h2>Testimonials</h2>
+        <h1>Trusted by Businesses and Creators Worldwide</h1>
+        <p>Words of praise from others about our presence. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Minus alias natus neque distinctio.</p>
+        <button>Read More</button>
       </div>
 
-      <div class="scroll-row" id="row2" style="margin-top: 30px;">
-        <div class="testimonial-track" id="track2">
+      <div class="track-row">
+        <div class="scroll-row" id="row1">
+          <div class="testimonial-track" id="track1"></div>
         </div>
+
+        <div class="scroll-row" id="row2">
+          <div class="testimonial-track" id="track2"></div>
+        </div>
+
       </div>
     </section>
 
@@ -511,9 +589,14 @@
     </footer>
   </main>
 
+
+  <!-- GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="showcase.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
   <script src="script.js"></script>
   <script src="GallerySec.js"></script>

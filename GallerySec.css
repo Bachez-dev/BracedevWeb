@@ -42,8 +42,6 @@
       }
     }
     
-    html,
-    body,
     #dragger,
     #ring,
     .img,
@@ -95,7 +93,7 @@
     .img {
       width: 400px;
       height: 400px;
-      background: #000;
+      background: url('./gallery/Template\ one.PNG');
       position: absolute;
       border: 5px solid #222;
       border-radius: 10px;

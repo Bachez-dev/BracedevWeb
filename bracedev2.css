@@ -4,9 +4,9 @@
 :root {
   --bg-color: #F2F2F2;
   --text-color: #282828;
-  --btn-cone:#FF5E00;
-  --bg-two:#959396;
-  --text-heading:#FF5E00;
+  --btn-cone: #FF5E00;
+  --bg-two: #959396;
+  --text-heading: #FF5E00;
 }
 
 
@@ -14,18 +14,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 body {
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
 
 .container-content {
   background-color: var(--bg-color);
-  padding: 1rem;
   height: 100dvh;
   font-family: "Inter", sans-serif;
   color: var(--text-color);
@@ -40,7 +42,7 @@ body {
   max-width: 2000px;
   margin: auto;
   position: relative;
-  border-radius: 60px;
+  /* border-radius: 60px; */
   border: none;
   overflow: hidden;
 }
@@ -87,7 +89,7 @@ body {
 
 .logo {
   margin-left: 1.1rem;
-  color: white;
+  color: #282828;
   font-size: 25px;
   padding-bottom: 1.2rem;
 }
@@ -266,7 +268,6 @@ nav ul a:hover {
 
 video {
   border: 1px solid #ffffff18;
-  border-radius: 60px;
   position: absolute;
   top: 0;
   left: 0;
@@ -275,4 +276,3 @@ video {
   object-fit: cover;
 }
 
-    

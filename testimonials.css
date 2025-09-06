@@ -1,85 +1,152 @@
-    .testimonials-section {
-      padding: 60px 0;
-      background: #f9f9fb;
-    }
+        :root {
+          --bg-color: #F9F9FB;
+          --text-color: #282828;
+          --bg-two: #959396;
+          --text-heading: #FF5E00;
+        }
 
-    .testimonials-section h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
+        .testimonials-section {
+          width: 100%;
+          padding: 60px 20px;
+          background: #ffffff;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
 
-    .testimonials-section p {
-      text-align: center;
-      font-size: 14px;
-      margin-bottom: 40px;
-    }
+        /* === Header === */
+        .testimonials-header {
+          max-width: 800px;
+          text-align: center;
+          margin-bottom: 60px;
+        }
 
-    .scroll-row {
-      position: relative;
-      overflow: hidden;
-      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    }
+        .testimonials-header h2 {
+          font-size: 1.1rem;
+          margin-bottom: 10px;
+          color: var(--text-heading);
+        }
 
-    .testimonial-track {
-      display: flex;
-      gap: 20px;
-      padding: 0 10px;
-      background: #f9f9fb;
-    }
+        .testimonials-header h1 {
+          font-size: 2.5rem;
+          margin-bottom: 20px;
+        }
 
-    .testimonial-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-      width: 450px;
-      box-sizing: border-box;
-      height: 300px;
-      flex-shrink: 0;
-    }
+        .testimonials-header p {
+          font-size: 1rem;
+          margin-bottom: 20px;
+          color: #555;
+        }
 
-    .testimonial-card p {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      white-space: normal !important;
-    }
+        .testimonials-header button {
+          padding: 10px 50px;
+          border: none;
+          border-radius: 30px;
+          background: #282828;
+          color: #fff;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
 
-    .quote {
-      width: 100%;
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
+        .testimonials-header button:hover {
+          background: var(--text-heading);
+        }
 
-    .user {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        /* === Tracks === */
+        .track-row {
+          position: relative;
+          width: 100%;
+          max-width: 1600px;
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+        }
 
-    .user img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+        .scroll-row {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+        }
 
-    .user-info {
-      font-size: 0.9rem;
-    }
+        /* Fade overlays */
+        .scroll-row::before,
+        .scroll-row::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          width: 80px;
+          height: 100%;
+          pointer-events: none;
+          z-index: 2;
+        }
 
-    .user-info span {
-      display: block;
-      font-weight: bold;
-    }
+        .scroll-row::before {
+          left: 0;
+          background: linear-gradient(to right, #ffffff 70%, transparent);
+        }
 
-    .fa-quote-left {
-      /* position: absolute;
-      top: -20px;
-      left: -20px; */
-      font-size: 50px;
-      color: rgba(149, 89, 228, 0.781);
-      z-index: 0;
-    }
+        .scroll-row::after {
+          right: 0;
+          background: linear-gradient(to left, #ffffff 70%, transparent);
+        }
+
+        .testimonial-track {
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+          will-change: transform;
+        }
+
+        .testimonial-card {
+          background: #fff;
+          border-radius: 16px;
+          padding: 20px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+          width: 300px;
+          height: 220px;
+          flex-shrink: 0;
+          margin: 20px 0;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .testimonial-card p {
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+
+        .quote {
+          width: 100%;
+          font-size: 1rem;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+
+        .user {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .user img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .user-info {
+          font-size: 0.9rem;
+        }
+
+        .user-info span {
+          display: block;
+          font-weight: bold;
+        }
+
+        .fa-quote-left {
+          font-size: 30px;
+          color: var(--bg-two);
+          margin-bottom: 10px;
+        }
